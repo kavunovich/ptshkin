@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/lib.css">
+        <style>html,body{margin: 0;padding: 0;background: #000; opacity: 1; animation: none}</style>
+    </head>
+    <body>
+        <div class="foot">
+            <div class="c-body">
+                <div class="c-item" style="margin-right: 2%">
+                    <p>
+                    <b style="font-size: max(2vw, 25px)">
+                        Скидка на первое групповое занятие -50%
+                    </b>
+                    </p>
+                    <br>
+                    <p style="font-size: max(1vw,20px)">
+                        * по промокоду «ONE»
+                    </p>
+                </div>
+                <div class="c-item">
+                    <button class="btn-req2">Записаться</button>
+                </div>
+            </div>
+        </div>
+        <div class="foot2">
+            <div class="foot2-i" style="margin-right: 25%; font-weight: 100">
+                <img src="/res/photo.png" class="icon">
+                <p>
+                    © 2018 – 2023 Студия "ONE"<br>
+                    Разработка сайта: Чембарисова Виктория<br>
+                    Ведение и продвижение: 
+                    <a style="color: yellow;" onclick="var anchor=document.createElement('a');anchor.href='https://bersa.digital/?utm_source=one-training';anchor.target='_blank';anchor.click()">
+                        Bersa Digital
+                    </a>
+                    <br><br>
+                    ИП Пташкин Алексей Павлович
+                    <br>
+                    <a style="color: white" onclick="window.top.location.href = 'privacy.php'">
+                        Политикой конфиденциальности
+                    </a>
+                </p>
+            </div>
+            <div class="foot2-i2">
+                <div class="dist2">
+                    <b style="opacity: 0.4">СОЦ. СЕТИ</b>
+                    <ul>
+                        <li>
+                            <a href="https://vk.com/one.training">ВКонтакте</a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/+iUPFR034ny8zMGQy">Telegram</a>
+                        </li>
+                        <li>
+                            <a href="https://dzen.ru/id/61f811e792b07973cc66e583">Яндекс.Дзен</a>
+                        </li>
+                    </ul>
+                  </div>
+                <div style="margin-left: 15%;" class="dist">
+                    <b style="opacity: 0.4;">КОНТАКТЫ</b>
+                    <ul>
+                        <li>
+                            <a href="mailto:info@one-training.ru"> info@one-training.ru</a>
+                        </li>
+                        <li>
+                            <a href="tel:+74954315880">+7 (495) 431-58-80</a>
+                        </li>
+                        <li>г. Москва, Армянский переулок, д. 7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="map-l" class="map"></div>
+
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=057d7990-f73f-47dd-8c3b-c992d92b973a&lang=ru_RU"></script>
+        <script>
+            var body = document.querySelector("body");
+            var foot2 = document.querySelector(".foot2");
+            var foot2_i = document.querySelector(".foot2-i");
+            var foot2_i2 = document.querySelector(".foot2-i2");
+            var dist = document.querySelector(".dist");
+            var dist_ul = document.querySelector(".dist ul");
+            var dist2 = document.querySelector(".dist2");
+            var btn_req2 = document.querySelector(".btn-req2");
+            var times = 0;
+            var referrer = document.referrer;
+            var arrallow = 
+            ["/dinamicheskaya.php", 
+            "/pozvonochnika.php", 
+            "/sustavov.php", 
+            "/detyam.php", 
+            "/dinamicheskiy-pilates.php", 
+            "/detskaya-gimnastika.php",
+            "/rastyazhka.php",
+            "/viit.php",
+            "/trx.php",
+            "/klassicheskiy.php",
+            "/modeliruyushchiy.php",
+            "/sportivnyy.php",
+            "/detskiy.php",
+            "/face.php",
+            "/ortopedicheskie-stelki.php",
+            "/teypirovanie.php",
+            "/dietologiya.php",
+            "/prenatalny-postnatalny-pilates.php"];
+            var data = document.documentElement.offsetHeight;
+            
+            btn_req2.onclick = function(){
+                if(referrer == location.origin + "/index.php" 
+                || arrallow.includes(referrer.substr(referrer.lastIndexOf("/"), referrer.lenght))){
+                    parent.postMessage("btn-2 none","*");
+                } else if(referrer == location.origin + "/footer.html"){
+                    alert("Сайт перезагрузится, так как это требуется для коректной работы после смены разрешения. Попробуйте еще раз.");
+                    top.location.reload();
+                }else{
+                    parent.postMessage("redirect /index.php","*");
+                }
+            };
+
+            body.addEventListener("click", function(e){parent.postMessage("bar true","*")});
+            function vw(percent){w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);return(percent*w)/100}
+            function vh(percent) {var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);return (percent * h) / 100}
+            
+            function init() {
+                let center = [55.76031325546684,37.63684321774366];
+                let size = [55, 55];
+                let map = new ymaps.Map('map-l', {
+                center: center,
+                zoom: 18.5
+                });
+                
+                let placemark = new ymaps.Placemark(center, {
+                    balloonContentHeader: 'Мы здесь',
+                    balloonContentFooter: 'Нажмите чуть ниже, чтобы открыть окно с полной информацией.',
+                }, {
+                    iconLayout: 'default#image',
+                    iconImageHref: '/res/mapmarker.svg',
+                    iconImageSize: [size[0], size[1]],
+                    iconImageOffset: [-(size[0]/2), -size[1]]
+                });
+
+                map.controls.remove('geolocationControl');
+                map.controls.remove('searchControl');
+                map.controls.remove('typeSelector');
+                map.controls.remove('fullscreenControl');
+                map.controls.remove('zoomControl');
+                map.controls.remove('rulerControl');
+                map.behaviors.disable(['scrollZoom']);
+
+                map.geoObjects.add(placemark);
+            }
+            ymaps.ready(init);
+
+            function setheight() {
+                data = document.documentElement.offsetHeight;
+                if(window.innerWidth < 1000) {
+                    foot2_i.style.fontSize = "16px";
+                    foot2_i.style.width = "100%";
+                    foot2_i2.style.fontSize = "16px";
+                    foot2.style.display = "inline-block";
+                    foot2_i2.style.display = "inline-block";
+                    dist.style.marginLeft = 0;
+                    dist.style.marginTop = "2%";
+                    dist2.style.marginBottom = "15%";
+                    height = document.documentElement.offsetHeight;
+                    data = height;
+                } else {
+                    foot2_i.style.marginRight = (foot2.clientWidth - foot2_i2.clientWidth - (foot2_i.clientWidth*1.3)) + "px";
+                    if(window.innerWidth < 750 && window.innerWidth > 584) {
+                        data = document.documentElement.offsetHeight;
+                    } else if(window.innerWidth > 1200) {
+                        foot2_i.style.marginRight = "30%";
+                        dist_ul.style.width = "200px";
+                    }
+                    data = document.documentElement.offsetHeight;
+                }
+                if(window.innerWidth > 1000) (data = data - 2);
+                parent.postMessage("data " + data,"*");                
+            }
+
+            setTimeout(() => (setheight()), 50);
+            data = document.documentElement.offsetHeight;
+            function resizedw(){location.reload(); parent.postMessage("data " + data,"*");} var doit;
+                window.onresize = function(){if(times !== 0) {clearTimeout(doit);doit = setTimeout(resizedw, 100)} else {times++}};
+        </script>
+    </body>
+</html>
