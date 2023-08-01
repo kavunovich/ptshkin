@@ -1,0 +1,26 @@
+<svg width="100" height="100" viewBox="0 0 46 52" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+                    <path d="M23.51 51.523a.5.5 0 0 1-.5.477c-.29 0-.51-.21-.52-.477-.145-3.168-1.756-5.217-4.832-6.147C7.53 42.968 0 33.863 0 23 0 10.297 10.297 0 23 0s23 10.297 23 23c0 10.863-7.53 19.968-17.658 22.376-3.076.93-4.687 2.98-4.83 6.147z"
+                              id="ae96eeecd750ec2a83543f00c9bc789d__b"></path>
+                    <filter x="-21.7%" y="-15.4%" width="143.5%" height="138.5%" filterUnits="objectBoundingBox"
+                              id="ae96eeecd750ec2a83543f00c9bc789d__a">
+
+                              <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+                              <feOffset dy="2"></feOffset>
+                              <feComponentTransfer>
+                                        <feFuncA type="linear" slope=".3"></feFuncA>
+                              </feComponentTransfer>
+                              
+                    </filter>
+          </defs>
+
+          <g fill="none" fill-rule="evenodd">
+                    <g fill-rule="nonzero" transform="translate(0, 0)" fill="red">
+                              <use filter="url(#ae96eeecd750ec2a83543f00c9bc789d__a)" xlink:href="#ae96eeecd750ec2a83543f00c9bc789d__b"></use>
+                              <use xlink:href="#ae96eeecd750ec2a83543f00c9bc789d__b"></use>
+                    </g>
+                    <path transform="translate(11, 11)" d="M9.587 4.437c-.087.17-.087.395-.087.843V9.5H5.28c-.448 0-.672 0-.843.087a.8.8 0 0 0-.35.35C4 10.107 4 10.332 4 10.78v2.44c0 .448 0 .672.087.843a.8.8 0 0 0 .35.35c.17.087.395.087.843.087H9.5v4.22c0 .448 0 .672.087.843a.8.8 0 0 0 .35.35c.17.087.395.087.843.087h2.44c.448 0 .672 0 .843-.087a.8.8 0 0 0 .35-.35c.087-.17.087-.395.087-.843V14.5h4.22c.448 0 .672 0 .843-.087a.8.8 0 0 0 .35-.35c.087-.17.087-.395.087-.843v-2.44c0-.448 0-.672-.087-.843a.8.8 0 0 0-.35-.35c-.17-.087-.395-.087-.843-.087H14.5V5.28c0-.448 0-.672-.087-.843a.8.8 0 0 0-.35-.35C13.893 4 13.668 4 13.22 4h-2.44c-.448 0-.672 0-.843.087a.8.8 0 0 0-.35.35z"
+                    fill="white"></path>
+          </g>
+</svg>
