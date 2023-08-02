@@ -1,0 +1,143 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+          <style>
+            #imginpt{
+              width: 200px;
+              height: 200px;
+              border-radius: 25%;
+              background-position: center;
+              background-size: cover;
+              width: 200px;
+              height: 200px;
+              position: absolute;
+              z-index: 0;
+            }
+            #imginpt::file-selector-button{display: none}
+            input[type="file"] {color: transparent}
+            .imgdiv{width: 200px;height: 200px}
+            #image-show{
+              background-color: rgb(127, 127, 127, 0.5);
+              position: absolute;
+              border-radius: 25%;
+              z-index: -1;
+              width: 200px;
+              height: 200px;
+            }
+          </style>
+</head>
+<body>
+  <img id="imagehidden" hidden>
+  <div class="imgdiv">
+    <img src="/res/3-blok.webp" id="image-show" height="200"/>
+    <input name="image" type="file" id="imginpt" accept=".jpg,.jpeg,.png" onchange="validateFileType(this, event)"/>  
+  </div>
+  <button onclick="test()">dddddddddddddddddddd</button>
+  <script>
+    var base64;
+    var imgtag = document.getElementById("image-show");
+    var img = document.getElementById("imagehidden");
+
+    function validateFileType(target, event){
+      var fileName = document.getElementById("imginpt").value;
+      var idxDot = fileName.lastIndexOf(".") + 1;
+      var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+      if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
+
+        imgtag.title = selectedFile.name;
+                                  
+        reader.onload = function(event) {
+          imgtag.src = event.target.result;
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(selectedFile);
+      }else{
+        target.value = "";
+      }   
+    }
+
+    function test(){
+      var canvas = document.createElement("canvas");
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      var dataURL = canvas.toDataURL();
+      var base641 = dataURL.split(",")[1];
+
+      var formData = new FormData();
+      formData.append("image", base641);
+      fetch("https://api.imgbb.com/1/upload?key=36922d8acb54cdccc20783694bd395b7", {
+        method: "POST",
+        body: formData,
+      })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    }
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="" method="GET" class="formWithValidation">
+    <div class="inpt-div">
+        <input type="text" id="name" name="name" placeholder="Имя" maxlength="30"/>
+    </div>
+    <div class="inpt-div">
+        <img src="/res/flag.png" width="25" height="13" style="margin-left: 20px;margin-right: 15px; border: 1px solid #aaa">
+        <span>+7</span>
+        <input type="tel" id="phone" name="phone" placeholder="(999) 999-99-99" maxlength="15" style="padding-left: 5px">
+    </div>
+
+    <button>Записаться</button>
+</form>
+<script>
+  var form = document.querySelector('.formWithValidation');
+  var btn2 = form.querySelector('button');
+  var phone1 = form.querySelector('#phone');
+  let name1 = form.querySelector('#name');
+
+  form.addEventListener('submit', function (event) {
+      if(phone1.value.length < 15 || name1.value.length < 3){
+          event.preventDefault();
+      } else {
+          event.preventDefault();
+          btn2.innerHTML = '<div id="canvas"><canvas class="canva"></canvas></div>';
+          setTimeout(() => {event.target.submit()}, 500);
+      }
+  });
+</script>
+  <!-- <script>
+    fetch('/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    key1: 'value1',
+    key2: 'value2'
+  })
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+  </script> -->
+</body>
+</html>
