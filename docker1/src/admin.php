@@ -96,7 +96,7 @@ usort($files2, function($a,$b){
                     }
                 }
                 echo <<<EOT
-                    <div class="book">
+                    <div class="book nowthite" style="top: 8%;height: 100vh;">
                         <div class="book-i2">
                         <p><h3>Создание публикации</h3></p>
                         <form action="/admin.php" method="POST" onsubmit="this.disabled = true">
@@ -1184,7 +1184,7 @@ usort($files2, function($a,$b){
                         $limit33 = $filecount >= 25 ? 25 : $filecount;
 
                         echo <<<EOT
-                        <div class="book" style="left: 0">
+                        <div class="book" style="top: 8%;left: 0; height: 100vh;">
                             <div class="book-i2">
                                 <div style="text-align: left">
                                     <h2>Вы уверены?</h2>
@@ -1199,7 +1199,7 @@ usort($files2, function($a,$b){
                         EOT;
                         
                         echo <<<EOT
-                            <div class="book" style="left: 0">
+                            <div class="book" style="top: 8%;left: 0; height: 100vh;">
                                 <div class="book-i2">
                                     <p>
                                         <h3>Редактирование публикации</h3>
@@ -1220,13 +1220,13 @@ usort($files2, function($a,$b){
                             <div>
                                 <div class="nav n-book">
                                     <div class="nav-i n-n-i" onclick="document.querySelector('.ttxx3').value += '*Жирный текст*';">
-                                        <img width="20" height="20" src="https://img.icons8.com/ios-filled/50/ffffff/bold.png" />
+                                        <img width="20" height="20" src="https://img.icons8.com/ios-filled/100/ffffff/bold.png" />
                                     </div>
                                     <div class="nav-i n-n-i" onclick="document.querySelector('.ttxx3').value += '|Курсив|';">
-                                        <img width="20" height="20" src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/50/ffffff/external-italics-text-style-funtion-button-for-document-application-text-bold-tal-revivo.png" />
+                                        <img width="20" height="20" src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/100/ffffff/external-italics-text-style-funtion-button-for-document-application-text-bold-tal-revivo.png" />
                                     </div>
                                     <div class="nav-i n-n-i" onclick="document.querySelector('.ttxx3').value += '$space •Список•';">
-                                        <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/50/ffffff/list--v1.png" />
+                                        <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/100/ffffff/list--v1.png" />
                                     </div>
                                 </div>
 
@@ -1371,8 +1371,49 @@ usort($files2, function($a,$b){
                     echo '</div>';
                 }
                 fclose($baseid);
+                echo <<<END
+                    <script>
+                    window.onload = function() {
+                        if(window.window. innerWidth <= 850) {
+                            document.querySelector('.panels').style.display = "block";
+                            document.querySelector('.double_panel').style.margin = "0";
+                            document.querySelector('.double_panel').style.marginTop = "5%";
+                            document.querySelector('.double_panel').style.width = "100%";
+                            document.querySelector('.panels').style.padding = "5%";
+                            document.querySelector('.double_panel').style.height = "65%";
+                            document.querySelector('.deep_panel').style.height = "auto";
+                            document.querySelector('.panels').style.height = "calc(100vh - 10%)";
+                        }
+                        document.querySelectorAll('.book')[0].style.background = "#00000052";
+                        document.querySelectorAll('.book')[1].style.background = "#00000052";
+                        document.querySelectorAll('.book')[2].style.background = "#00000052";
+                    }
+                    window.onresize = function() {
+                    
+                        if(window.window. innerWidth <= 850) {
+                            document.querySelector('.panels').style.display = "block";
+                            document.querySelector('.panels').style.padding = "5%";
+                            document.querySelector('.panels').style.height = "calc(100vh - 10%)";
+                            document.querySelector('.double_panel').style.margin = "0";
+                            document.querySelector('.double_panel').style.marginTop = "5%";
+                            document.querySelector('.double_panel').style.width = "100%";
+                            document.querySelector('.double_panel').style.height = "65%";
+                            document.querySelector('.deep_panel').style.height = "auto";
+                        } else {
+                            document.querySelector('.panels').style.display = "flex";
+                            document.querySelector('.panels').style.padding = "1%";
+                            document.querySelector('.double_panel').style.margin = "2%";
+                            document.querySelector('.double_panel').style.marginTop = "0";
+                            document.querySelector('.double_panel').style.width = "800px";
+                            document.querySelector('.double_panel').style.width = "100%";
+                            document.querySelector('.deep_panel').style.height = "400px";
+                            document.querySelector('.panels').style.height = "96%";
+                        }
+                        
+                    }
+                </script>
+            END;
                 die;
-            } else {
             }
         }
     }
