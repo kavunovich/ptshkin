@@ -855,6 +855,7 @@ b1 {
   font-size: 14px;
   padding-left: 15px;
   font-weight: 600;
+  max-width: 250px;
 }
 
 .canva {

@@ -1,6 +1,6 @@
 <?php
 include 'lib.php';
-$success = null;
+$success = null; 
 
 if(empty($_COOKIE["message"])){
     $result = "";

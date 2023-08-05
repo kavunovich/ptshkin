@@ -30,7 +30,7 @@ if(isset($_SERVER['HTTPS'])) {
   ];
   
   if(!empty($_SERVER['HTTP_REFERER'])){
-    if(!str_contains($_SERVER['HTTP_REFERER'], $http . $_SERVER['SERVER_NAME'])) {
+    if(!str_contains($_SERVER['HTTP_REFERER'], $http . $_SERVER['SERVER_NAME']) && $_SERVER['HTTP_REFERER'] == 'android-app:\/\/org.telegram.messenger\/') {
       http_response_code(500);
       die(json_encode($response));                
     }
