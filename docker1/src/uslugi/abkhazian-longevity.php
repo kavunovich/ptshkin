@@ -120,7 +120,7 @@
 
             <div class="c-body" style="display: flex;margin-bottom: 15%">
                 <div class="c-item">
-                    <img style="width: 100%" src="/res/-.webp">
+                    <img style="width: 100%" src="/res/-.jpg">
                 </div>
                 <div class="c-item">
                     <div>
@@ -363,8 +363,7 @@
                     <div style="width: 100%">
                         <ul id="c-ul">
                             <li>Организация</li>
-                            <li>Отель <a href="HTTPS://ATRIUM-VICTORIA.COM/"
-                                    style="color: #2563a3">&nbsp;"Samson"&nbsp;</a> 100м. от набережной</li>
+                            <li><p>Отель <a href="HTTPS://ATRIUM-VICTORIA.COM/"  style="color: #2563a3">"Samson"</a> 100м. от набережной</p></li>
                             <li>Экскурсии</li>
                             <li>Консультация и сопровождение</li>
                             <li>* Массаж в номере</li>
