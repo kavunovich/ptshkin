@@ -1,4 +1,4 @@
-kivar bar = document.querySelector(".bar");
+var bar = document.querySelector(".bar");
 var mp = document.querySelector(".mode-phone");
 var w1 = document.querySelector(".w1");
 var w2 = document.querySelector(".w2");
@@ -134,7 +134,7 @@ for(let i = 0; i < barlist.length; i++){
   div.appendChild(li);
   bar_ul2.appendChild(div);
   // код для окон
-  if(i < 244) {
+  if(i < 2) {
     var win = document.createElement("div");
     win.setAttribute("class", "m-win mw" + i);
     div.appendChild(win);
@@ -171,17 +171,17 @@ for(let i = 0; i < barlist.length; i++){
 }
 
     scl.innerHTML = `
-      <a href="https://vk.com/one.training" target="_blank">
+      <a href="https://vk.com/one.training" target="_blank" rel="nofollow noopener">
         <svg width="30px" style="margin-right: 5px" viewBox="0 0 100 100" fill="none">
           <path fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50ZM25 34c.406 19.488 10.15 31.2 27.233 31.2h.968V54.05c6.278.625 11.024 5.216 12.93 11.15H75c-2.436-8.87-8.838-13.773-12.836-15.647C66.162 47.242 71.783 41.62 73.126 34h-8.058c-1.749 6.184-6.932 11.805-11.867 12.336V34h-8.057v21.611C40.147 54.362 33.838 48.304 33.556 34H25Z" fill="#ffffff"></path>
         </svg>
       </a>
-      <a href="https://t.me/+iUPFR034ny8zMGQy" target="_blank">
+      <a href="https://t.me/+iUPFR034ny8zMGQy" target="_blank" rel="nofollow noopener">
         <svg width="30px" style="margin-right: 5px" viewBox="0 0 100 100">
           <path fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z" fill="#ffffff"></path>
         </svg>
       </a>
-      <a href="https://dzen.ru/id/61f811e792b07973cc66e583" target="_blank">
+      <a href="https://dzen.ru/id/61f811e792b07973cc66e583" target="_blank" rel="nofollow noopener">
         <img src="/res/dzen.svg" alt="website icon" style="width: 30px;">
       </a>
     `;
@@ -190,7 +190,7 @@ var list = document.querySelector(".bar ul");
 var li1 = document.querySelector(".ww1");
 var li2 = document.querySelector(".ww2");
 
-// ированddjdjddие оdcssdd
+// Формирование окон
 for(let i = 0; i < w1list.length; i++){
   var li = document.createElement("li");
   var link = document.createElement("a");
@@ -584,7 +584,7 @@ extra3[2].style.setProperty('--marginleft','56.8%');
         w5.style.visibility = "hidden";
         w2.style.borderRadius = "0 0 15px 15px";
         w2.style.height = "auto";
-      } else if(mess[0] == "btn-1") {
+      } else if(mess[0] == "btn-2") {
         book.style.display = "flex";
         if(window.innerWidth > 1000) {
           exit.style.right = booki.offsetLeft + "px";
@@ -598,7 +598,7 @@ extra3[2].style.setProperty('--marginleft','56.8%');
         window.location.href = mess[1];
       }
     });
-    mp.onload = function(){
+    mp.onclick = function(){
       if(overflow > 0) {
         var mscl = document.querySelector(".m_scl");
         document.body.style.overflow = "auto";

@@ -120,7 +120,7 @@
                 disable();
                 show = false;
             } else{
-                for(let i = 0; i < 4; i++){
+                for(let i = 0; i < cont.length; i++){
                     cont[i].style.display = "block";
                     btn.textContent = "Скрыть";
                 }

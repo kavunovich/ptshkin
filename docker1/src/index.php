@@ -1,6 +1,6 @@
 <?php
 include 'lib.php';
-$success = true; 
+$success = null; 
 
 if(empty($_COOKIE["message"])){
     $result = "";
@@ -8,7 +8,7 @@ if(empty($_COOKIE["message"])){
 } else {
     $result = $_COOKIE["message"];
     $true = true;
-    setcookie("message1", "", time() + 60 * 60 * 24 * 365 * 10);
+    setcookie("message", "", time() + 60 * 60 * 24 * 365 * 10);
 }
 // Создание заявки и отправки ее
 try {
@@ -24,25 +24,25 @@ try {
             );
 
             if (!file_exists("Requests/" . $ip . "/")) {
-                mkdir("Requests/" . $ip . "/", 0767, true);
+                mkdir("Requests/" . $ip . "/", 0777, true);
             }
 
             if (!str_contains(file_get_contents(ids), $ip)) {
                 if (empty($_COOKIE["ready"]) || empty($_COOKIE["id"]) || !file_get_contents(ids)) {
-                    $baseid = fopen("i2VDjbe4_ZNXhiFYVBN_v@!p-8feближайшем');
+                    $baseid = fopen("i2VDjbe4_ZNXhiFYVBN_v@!p-8feYv@V/id.txt", 'r');
                     while (!feof($baseid)) {
                         $ids = fgets($baseid);
                         if (strlen($ids) > 0) {
                             $id = explode(',', $ids, 10000);
                             $inner_insert = $ids . "," . $ip;
-                            // Я думтаточно для одной заявки
-                            setcookie("ready", "true", time() + 60 * 60);
+                            // Я думаю 10 лет достаточно для одной заявки
+                            setcookie("ready", "true", time() + 60 * 60 * 24 * 365 * 10);
                             header("Refresh:0");
                         } else {
                             $id = $ip;
                             $inner_insert = $id;
-                            //toдостаточно для одной заявки
-                            setcookie("ready", "true", time() + 60);
+                            // Я думаю 10 лет достаточно для одной заявки
+                            setcookie("ready", "true", time() + 60 * 60 * 24 * 365 * 10);
                             header("Refresh:0");
                         }
                     }
@@ -71,9 +71,16 @@ try {
     }
     start();
 } catch (Exception $e) {
-    // echo 'Не удалось получить результат из левой части. Уведомите ближайшему или ж Извените за неудобства.';
-    // На крайняк если климанет и
+    echo 'Не удалось получить результат из левой части. Уведомите ближайшему или же самому разработчику сайта. Извените за неудобства.';
+    // На крайняк если климанет и все улетит на небеса
 }
+// Далее идет очень сжатый html-код. В этом коде все по стандарту, что есть практически во всех страницах поэтому я сжал его как смог. 
+// Для начала идут всякие окна бара, заявки и т.д.
+// Далее сам бар, бар в мобильной версии называется m-menu из-за большего различия
+// М-ulp это окна для моб версии
+// body1 костыль но он не сильно занимает места, просто для отделения самого боди от контента для допустим бара
+
+// Здесь все написал, чтобы не было видно в коде самой страницы
 ?>
 <!DOCTYPE html>
 <html>
@@ -148,12 +155,12 @@ try {
                 var name1 = form.querySelector('#name');
 
                 form.addEventListener('submit', function (event) {
-                    if(phone.value.length < -15 || name1.value.length < -3){
+                    if(phone.value.length < 15 || name1.value.length < 3){
                         event.preventDefault();
                     } else {
                         event.preventDefault();
                         btn1.innerHTML = '<div id="canvas"><canvas class="canva"></canvas></div>';
-
+                        loader();
                         setTimeout(() => {event.target.submit()}, 500);
                     }
                 });
@@ -378,7 +385,7 @@ try {
         if(window.innerWidth > 1000) {
             document.documentElement.style.overflow = "hidden";
             exit.style.right = booki.offsetLeft + "px";
-            exit.style.top = booki.offsetTop + "px";
+            exit.style.top = booki.offsetTop - 30 + "px";
         }
         const inputElement = document.querySelector('#phone');
         inputElement.addEventListener('keydown',enforceFormat);
@@ -425,7 +432,7 @@ try {
         function mode() { 
             modedef();
             book.style.height = "calc(100vh + 75px)";
-            if(window.innerWidth < 1200) {
+            if(window.innerWidth < 1000) {
                 cbody.style.display = "block";
                 cit[0].style.width = "auto";
                 cit[0].style.marginRight = "0";
