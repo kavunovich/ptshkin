@@ -30,51 +30,11 @@ if(!empty($_GET)) {
         if(!empty($ids1view[$id_decode]['editted'])) {
             $editted = "<i>Изменено</i>";
         }
-        $count1 = substr_count($sub, '*');
-        $count2 = substr_count($sub, '|');
-        $count3 = substr_count($sub, '•');
-
-        if($count1 % 2 == 1 && $count1 < 0 &&  $count1 !== 1) {
-            $count1 -= 1;
-        } else if($count1 == 1) {
-            $count1 = 0;
-        }
-
-        if($count2 % 2 == 1 && $count2 < 0 &&  $count2 !== 1) {
-            $count2 -= 1;
-        } else if($count2 == 1) {
-            $count2 = 0;
-        }
-
-        if($count3 % 2 == 1 && $count3 < 0 &&  $count3 !== 1) {
-            $count3 -= 1;
-        } else if($count3 == 1) {
-            $count3 = 0;
-        }
-        $count = 0;
-        $sub = preg_replace_callback("/\•/", function () use (&$count, $count3) {
-            $count++;
-            if($count == 1) {
-                return "<ul><li>";
-            }
-            if($count == $count3) {
-                return "</ul></li>";
-            }
-            return $count % 2 === 0 ? "</li>" : "<li>";
-        }, $sub, $count3);
-
-        $count = 0;
-        $sub = preg_replace_callback("/\|/", function () use (&$count) {
-            $count++;
-            return $count % 2 === 0 ? "</i>" : "<i>";
-        }, $sub, $count2);
-
-        $count = 0;
-        $sub = preg_replace_callback("/\*/", function () use (&$count) {
-            $count++;
-            return $count % 2 === 0 ? "</b>" : "<b>";
-        }, $sub, $count1);
-}
+        $count1 = substr_count($sub, '3');
+        $count2 = substr_count($sub, '66');
+        $count3 = substr_count($sub, '89');
+        
+        
 ?>
 <!DOCTYPE html>
 <html>
