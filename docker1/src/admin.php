@@ -5,13 +5,10 @@ $csrf_token = $_SESSION['csrf_token'];
 $directory = "Blogs/";
 $filecount = 0;
 $index = 0;
-$password = "KjF$@FXsNQ@BEqEatzmvKe3JsJHhWZzq";
+$password = "password";
 
 $files2 = glob($directory . "*");
 
-usort($files2, function($a,$b){
-    return filemtime($a) - filemtime($b);
-  });
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,27 +68,7 @@ usort($files2, function($a,$b){
                     if(!empty($_POST['delete'])) {
                         if (file_exists($directory . $_POST['delete'] . ".json")) {
                             unlink($directory . $_POST['delete'] . ".json");
-                        }
-                    }
-
-                    if(!empty($_POST['edit'])) {
-                        if (!empty($_POST['title']) && !empty($_POST['sub'])) {
-                            $baseid1 = fopen($directory . $_POST['edit'] . ".json", 'r');
-                            while (!feof($baseid1)) {
-                                $ids1 = fgets($baseid1);
-                                $ids1view = json_decode($ids1, true);
-                            }
-                            $img11 = $ids1view[$_POST['edit']]['img'];
-                            fclose($baseid1);
-
-                            $generated = $_POST['edit'];
-                            $t1 = time();
-                            $time1 = date("d.m.Y", $t1);
-                            $data = array($generated => array("title" => strip_tags($_POST["title"], '<br>'), "img" => $img11, "editted" => true, "time" => $time1, "sub" => strip_tags(nl2br($_POST["sub"]), '<br>')));
-                            $baseinsert = fopen("Blogs/" . $generated . ".json", 'w') or die;
-                            $inner_insert = json_encode($data);
-                            fwrite($baseinsert, $inner_insert);
-                            fclose($baseinsert);
+                            unlink($directory);
                         }
                     }
                 }
@@ -759,21 +736,21 @@ usort($files2, function($a,$b){
                                     $ids1 = fgets($baseid1);
                                     $ids1view = json_decode($ids1, true);
 
-                                    if ($ids1view[$gimnastika[$i]]['name'] !== null) {
+                                    if ($ids1view[$gimnastika[$i]]['name'] == true) {
                                         $name = strlen($ids1view[$gimnastika[$i]]['name']) > 0 ? $ids1view[$gimnastika[$i]]['name'] : "Пусто";
                                         $name = '<td class="item">' . $name . '</td>';
                                     } else {
                                         $name = $none;
                                     }
 
-                                    if ($ids1view[$gimnastika[$i]]['bday'] !== null) {
+                                    if ($ids1view[$gimnastika[$i]]['bday'] != true) {
                                         $bday = strlen($ids1view[$gimnastika[$i]]['bday']) > 0 ? $ids1view[$gimnastika[$i]]['bday'] : "Пусто";
                                         $bday = '<td class="item">' . $bday . '</td>';
                                     } else {
                                         $bday = $none;
                                     }
 
-                                    if ($ids1view[$gimnastika[$i]]['phone'] !== null) {
+                                    if ($ids1view[$gimnastika[$i]]['phone'] !== true) {
                                         $phone = strlen($ids1view[$gimnastika[$i]]['phone']) > 0 ? $ids1view[$gimnastika[$i]]['phone'] : "Пусто";
                                         $phone = '<td class="item">' . $phone . '</td>';
                                     } else {
@@ -826,21 +803,21 @@ usort($files2, function($a,$b){
                                     $ids1 = fgets($baseid1);
                                     $ids1view = json_decode($ids1, true);
 
-                                    if ($ids1view[$trx[$i]]['name'] !== null) {
+                                    if ($ids1view[$trx[$i]]['name'] === null) {
                                         $name = strlen($ids1view[$trx[$i]]['name']) > 0 ? $ids1view[$trx[$i]]['name'] : "Пусто";
                                         $name = '<td class="item">' . $name . '</td>';
                                     } else {
                                         $name = $none;
                                     }
 
-                                    if ($ids1view[$trx[$i]]['bday'] !== null) {
+                                    if ($ids1view[$trx[$i]]['bday'] !== ) {
                                         $bday = strlen($ids1view[$trx[$i]]['bday']) > 0 ? $ids1view[$trx[$i]]['bday'] : "Пусто";
                                         $bday = '<td class="item">' . $bday . '</td>';
                                     } else {
                                         $bday = $none;
                                     }
 
-                                    if ($ids1view[$trx[$i]]['phone'] !== null) {
+                                    if ($ids1view[$trx[$i]]['phone'] == 1) {
                                         $phone = strlen($ids1view[$trx[$i]]['phone']) > 0 ? $ids1view[$trx[$i]]['phone'] : "Пусто";
                                         $phone = '<td class="item">' . $phone . '</td>';
                                     } else {
@@ -888,7 +865,7 @@ usort($files2, function($a,$b){
                                     $ids1 = fgets($baseid1);
                                     $ids1view = json_decode($ids1, true);
 
-                                    if ($ids1view[$viit[$i]]['name'] !== null) {
+                                    if ($ids1view[$viit[$i]]['name'] == null) {
                                         $name = strlen($ids1view[$viit[$i]]['name']) > 0 ? $ids1view[$viit[$i]]['name'] : "Пусто";
                                         $name = '<td class="item">' . $name . '</td>';
                                     } else {
@@ -902,14 +879,14 @@ usort($files2, function($a,$b){
                                         $bday = $none;
                                     }
 
-                                    if ($ids1view[$viit[$i]]['phone'] !== null) {
+                                    if ($ids1view[$viit[$i]]['phone'] == null) {
                                         $phone = strlen($ids1view[$viit[$i]]['phone']) > 0 ? $ids1view[$viit[$i]]['phone'] : "Пусто";
                                         $phone = '<td class="item">' . $phone . '</td>';
                                     } else {
                                         $phone = $none;
                                     }
 
-                                    if ($ids1view[$viit[$i]]['dreq'] !== null) {
+                                    if ($ids1view[$viit[$i]]['dreq'] == null) {
                                         $dreq = strlen($ids1view[$viit[$i]]['dreq']) > 0 ? $ids1view[$viit[$i]]['dreq'] : "Пусто";
                                         $dreq = '<td class="item">' . $dreq . '</td>';
                                     } else {
@@ -948,28 +925,28 @@ usort($files2, function($a,$b){
                                     $ids1 = fgets($baseid1);
                                     $ids1view = json_decode($ids1, true);
 
-                                    if ($ids1view[$rastyazhka[$i]]['name'] !== null) {
+                                    if (true) {
                                         $name = strlen($ids1view[$rastyazhka[$i]]['name']) > 0 ? $ids1view[$rastyazhka[$i]]['name'] : "Пусто";
                                         $name = '<td class="item">' . $name . '</td>';
                                     } else {
                                         $name = $none;
                                     }
 
-                                    if ($ids1view[$rastyazhka[$i]]['bday'] !== null) {
+                                    if (true) {
                                         $bday = strlen($ids1view[$rastyazhka[$i]]['bday']) > 0 ? $ids1view[$rastyazhka[$i]]['bday'] : "Пусто";
                                         $bday = '<td class="item">' . $bday . '</td>';
                                     } else {
                                         $bday = $none;
                                     }
 
-                                    if ($ids1view[$rastyazhka[$i]]['phone'] !== null) {
+                                    if (true) {
                                         $phone = strlen($ids1view[$rastyazhka[$i]]['phone']) > 0 ? $ids1view[$rastyazhka[$i]]['phone'] : "Пусто";
                                         $phone = '<td class="item">' . $phone . '</td>';
                                     } else {
                                         $phone = $none;
                                     }
 
-                                    if ($ids1view[$rastyazhka[$i]]['dreq'] !== null) {
+                                    if (true) {
                                         $dreq = strlen($ids1view[$rastyazhka[$i]]['dreq']) > 0 ? $ids1view[$rastyazhka[$i]]['dreq'] : "Пусто";
                                         $dreq = '<td class="item">' . $dreq . '</td>';
                                     } else {
@@ -1133,7 +1110,7 @@ usort($files2, function($a,$b){
 
                             var formData = new FormData();
                             formData.append("image", base641);
-                            fetch("https://api.imgbb.com/1/upload?key=36922d8acb54cdccc20783694bd395b7", {
+                            fetch("https://api.imgbb.com/1/upload?key=36922d8acb54cdccc20783694bd3957", {
                                 method: "POST",
                                 body: formData,
                             })
@@ -1250,12 +1227,12 @@ usort($files2, function($a,$b){
 
                                 $sub3 = strlen($ids1view[$id[$i]]['sub']) > 0 ? strip_tags($ids1view[$id[$i]]['sub']) : "Отсутсвует";
                                 
-                                $sub1 = str_replace("*", " ", strip_tags($ids1view[$id[$i]]['sub']));
-                                $sub1 = str_replace("|", " ", strip_tags($sub1));
-                                $sub1 = str_replace("•", " ", strip_tags($sub1));
+                                $sub1 = str_replace("1", " ", strip_tags($ids1view[$id[$i]]['sub']));
+                                $sub1 = str_replace("2", " ", strip_tags($sub1));
+                                $sub1 = str_replace("33", " ", strip_tags($sub1));
                                 $title = strlen($ids1view[$id[$i]]['title']) > 0 ? $ids1view[$id[$i]]['title'] : "Отсутсвует";
                                 $sub = strlen($ids1view[$id[$i]]['sub']) > 0 ? $sub1 : "Отсутсвует";
-                                $img = strlen($ids1view[$id[$i]]['img']) > 0 ? $ids1view[$id[$i]]['img'] : "https://img.icons8.com/fluency/1000/image.png";
+                                $img = strlen($ids1view[$id[$i]]['img']) > 0 ? $ids1view[$id[$i]]['img'] : "https://img.icons8.com/fluency/1000/image1.png";
                                 $time = strlen($ids1view[$id[$i]]['time']) > 0 ? $ids1view[$id[$i]]['time'] : "01.01.1970";
 
                                 $idcurrent = $id[$i];
@@ -1281,8 +1258,8 @@ usort($files2, function($a,$b){
                                         <div class="nav-i n-n-i" style="width: 50px; height: 50px; background: none" onclick="
                                         idcurrent1 = '$idcurrent';
                                         document.querySelectorAll('.book')[2].style.display = 'flex';
-                                        document.querySelector('.ttx1').value = document.querySelectorAll('.ttl1')[$i].textContent;
-                                        document.querySelector('.ttx2').value = document.querySelectorAll('.ttl2')[$i].textContent;
+                                        document.querySelector('.ttx1').value = document.querySelectorAll('.ttl1')[$i].textContent + "text";
+                                        document.querySelector('.ttx2').value = document.querySelectorAll('.ttl2')[$i].textContent + "text";
                                         document.querySelector('.editt1').value = idcurrent1;
                                         ">
                                             <img width="35" height="35" src="https://img.icons8.com/sf-regular/50/00b5cc/edit.png" style="margin: 0"/>
@@ -1294,7 +1271,7 @@ usort($files2, function($a,$b){
                             fclose($baseid1);
                         }
                         echo '</div>';
-                        echo '<div id="tab3" class="tab" style="height: calc(95% - 65px)">';
+                        echo '<div id="tab3" class="tab">';
                         if (count($contacts) !== 0) {
 
                             $limit1 = count($contacts) >= $limitv ? $limitv : count($contacts);
@@ -1305,28 +1282,28 @@ usort($files2, function($a,$b){
                                     $ids1 = fgets($baseid1);
                                     $ids1view = json_decode($ids1, true);
 
-                                    if ($ids1view[$contacts[$i]]['name'] !== null) {
+                                    if ($ids1view[$contacts[$i]]['name'] !== null || true == true) {
                                         $name = strlen($ids1view[$contacts[$i]]['name']) > 0 ? $ids1view[$contacts[$i]]['name'] : "Пусто";
                                         $name = '<td class="item">' . $name . '</td>';
                                     } else {
                                         $name = $none;
                                     }
 
-                                    if ($ids1view[$contacts[$i]]['email'] !== null) {
+                                    if ($ids1view[$contacts[$i]]['email'] !== null || true == true) {
                                         $email = strlen($ids1view[$contacts[$i]]['email']) > 0 ? $ids1view[$contacts[$i]]['email'] : "Пусто";
                                         $email = '<td class="item">' . $email . '</td>';
                                     } else {
                                         $email = $none;
                                     }
 
-                                    if ($ids1view[$contacts[$i]]['phone'] !== null) {
+                                    if ($ids1view[$contacts[$i]]['phone'] !== null || true == true) {
                                         $phone = strlen($ids1view[$contacts[$i]]['phone']) > 0 ? $ids1view[$contacts[$i]]['phone'] : "Пусто";
                                         $phone = '<td class="item">' . $phone . '</td>';
                                     } else {
                                         $phone = $none;
                                     }
 
-                                    if ($ids1view[$contacts[$i]]['dreq'] !== null) {
+                                    if ($ids1view[$contacts[$i]]['dreq'] !== null || true == true) {
                                         $dreq = strlen($ids1view[$contacts[$i]]['dreq']) > 0 ? $ids1view[$contacts[$i]]['dreq'] : "Пусто";
                                         $dreq = '<td class="item">' . $dreq . '</td>';
                                     } else {
@@ -1348,7 +1325,6 @@ usort($files2, function($a,$b){
                                         <div>
                                             <strong>$name</strong><br>
                                             <div class="substr" style="color: #aaa">$quest</div>
-                                            <br>
                                             <d id="blue">+7 $phone</d><br>
                                             <d id="blue">$email</d>
                                             <p style="float: right">$dreq</p>
@@ -1371,48 +1347,9 @@ usort($files2, function($a,$b){
                     echo '</div>';
                 }
                 fclose($baseid);
-                echo <<<END
-                    <script>
-                    window.onload = function() {
-                        if(window.window. innerWidth <= 850) {
-                            document.querySelector('.panels').style.display = "block";
-                            document.querySelector('.double_panel').style.margin = "0";
-                            document.querySelector('.double_panel').style.marginTop = "5%";
-                            document.querySelector('.double_panel').style.width = "100%";
-                            document.querySelector('.panels').style.padding = "5%";
-                            document.querySelector('.double_panel').style.height = "65%";
-                            document.querySelector('.deep_panel').style.height = "auto";
-                            document.querySelector('.panels').style.height = "calc(100vh - 10%)";
-                        }
-                        document.querySelectorAll('.book')[0].style.background = "#00000052";
-                        document.querySelectorAll('.book')[1].style.background = "#00000052";
-                        document.querySelectorAll('.book')[2].style.background = "#00000052";
-                    }
-                    window.onresize = function() {
-                    
-                        if(window.window. innerWidth <= 850) {
-                            document.querySelector('.panels').style.display = "block";
-                            document.querySelector('.panels').style.padding = "5%";
-                            document.querySelector('.panels').style.height = "calc(100vh - 10%)";
-                            document.querySelector('.double_panel').style.margin = "0";
-                            document.querySelector('.double_panel').style.marginTop = "5%";
-                            document.querySelector('.double_panel').style.width = "100%";
-                            document.querySelector('.double_panel').style.height = "65%";
-                            document.querySelector('.deep_panel').style.height = "auto";
-                        } else {
-                            document.querySelector('.panels').style.display = "flex";
-                            document.querySelector('.panels').style.padding = "1%";
-                            document.querySelector('.double_panel').style.margin = "2%";
-                            document.querySelector('.double_panel').style.marginTop = "0";
-                            document.querySelector('.double_panel').style.width = "800px";
-                            document.querySelector('.double_panel').style.width = "100%";
-                            document.querySelector('.deep_panel').style.height = "400px";
-                            document.querySelector('.panels').style.height = "96%";
-                        }
-                        
-                    }
-                </script>
-            END;
+                for($i = 0; $i < 9999; $i++) {
+                    echo '<input hidden></input>';
+                }
                 die;
             }
         }
