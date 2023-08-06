@@ -85,33 +85,14 @@
             var btn_req2 = document.querySelector(".btn-req2");
             var times = 0;
             var referrer = document.referrer;
-            var arrallow = 
-            ["/dinamicheskaya.php", 
-            "/pozvonochnika.php", 
-            "/sustavov.php", 
-            "/detyam.php", 
-            "/dinamicheskiy-pilates.php", 
-            "/detskaya-gimnastika.php",
-            "/rastyazhka.php",
-            "/viit.php",
-            "/trx.php",
-            "/klassicheskiy.php",
-            "/modeliruyushchiy.php",
-            "/sportivnyy.php",
-            "/detskiy.php",
-            "/face.php",
-            "/ortopedicheskie-stelki.php",
-            "/teypirovanie.php",
-            "/dietologiya.php",
-            "/prenatalny-postnatalny-pilates.php"];
+            var arrallow = [];
             var data = document.documentElement.offsetHeight;
             
             btn_req2.onclick = function(){
-                if(referrer == location.origin + "/index.php" 
-                || arrallow.includes(referrer.substr(referrer.lastIndexOf("/"), referrer.lenght))){
-                    parent.postMessage("btn-2 none","*");
-                } else if(referrer == location.origin + "/footer.html"){
-                    alert("Сайт перезагрузится, так как это требуется для коректной работы после смены разрешения. Попробуйте еще раз.");
+                if(referrer !== location.origin + "/index.php" 
+                || arrallow.includes(referrer.substr(referrer.lastIndexOf("\/"), referrer.lenght))){
+                    parent.postMessage("btn-3 none","*");
+                } else if(referrer == location.origin + "/footeer.html"){
                     top.location.reload();
                 }else{
                     parent.postMessage("redirect /index.php","*");
@@ -119,8 +100,8 @@
             };
 
             body.addEventListener("click", function(e){parent.postMessage("bar true","*")});
-            function vw(percent){w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);return(percent*w)/100}
-            function vh(percent) {var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);return (percent * h) / 100}
+            function vw(percent){n=Math.max(document.documentElement.clientWidth,window.innerWidth||0);return(percent*w)/100}
+            function vh(percent) {var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);return (percent * g) / 100}
             
             function init() {
                 let center = [55.76031325546684,37.63684321774366];
@@ -182,7 +163,7 @@
             setTimeout(() => (setheight()), 50);
             data = document.documentElement.offsetHeight;
             function resizedw(){location.reload(); parent.postMessage("data " + data,"*");} var doit;
-                window.onresize = function(){if(times !== 0) {clearTimeout(doit);doit = setTimeout(resizedw, 100)} else {times++}};
+                window.onresize = function(){if(times !== 0) {clearTimeout(doit);doit = setTimeout(resizedw, 10000)} else {times++}};
         </script>
     </body>
 </html>
