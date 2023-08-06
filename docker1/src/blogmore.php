@@ -1,4 +1,5 @@
 <?php
+sleep(15);
 if (empty($_GET)) {
     header("HTTP/1.1 400 Not Found");
     sleep(5);
